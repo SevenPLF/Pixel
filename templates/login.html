@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>丹青-用户登录</title>
+    <style>
+        /* CSS样式 */
+/* 设置背景图片样式 */
+
+        #ifznm {
+            background-image: url('{% static 'image/1111.png' %}');
+            background-repeat: repeat;
+            background-position: left center;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 98vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+/* 设置登录框样式 */
+#isviw {
+    width: 285px;
+    margin: 135px; /* 适当的外边距 */
+    margin-top: 155px;
+    height: 188px;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    {#background-color: transparent;#}
+    padding: 20px;
+        {#padding-top: 10px;#}
+
+}
+#isviw h2 {
+    {#position: absolute;#}
+    {#top: 0px; /* 调整位置 */#}
+    margin-top: 0;
+    {#left: 10px; /* 调整位置 */#}
+    {#color: red; /* 设置颜色 */#}
+    {#left: 50%; /* 居中水平位置 */#}
+
+}.return-msg {
+    font-size: 14px; /* 字号小一号 */
+    color: red; /* 颜色为红色 */
+    {#margin-top: 5px; /* 顶部外边距 */#}
+}
+
+/* 设置输入框样式 */
+#isviw input[type="text"],
+#isviw input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    {#margin: 10px 0;#}
+    border: 1px solid #ccc; /* 添加边框 */
+    border-bottom: 1px solid #ccc; /* 添加下边框 */
+    box-sizing: border-box; /* 包含边框宽度在内 */
+}
+/* 设置登录按钮颜色为蓝色 */
+#isviw button {
+    width: 100%;
+    padding: 8px;
+    background-color: #0b67c2; /* 设置背景颜色 */
+    color: white; /* 设置文字颜色 */
+    border: none; /* 移除边框 */
+    border-radius: 5px; /* 设置圆角 */
+    cursor: pointer; /* 设置鼠标样式为手形 */
+    transition: background-color 0.3s; /* 设置背景颜色过渡效果 */
+}
+
+/* 鼠标悬停时更改背景颜色 */
+#isviw button:hover {
+    background-color: #0056b3; /* 设置鼠标悬停时的背景颜色 */
+}
+
+
+    </style>
+</head>
+<body>
+  <div id="ifznm">
+    <main id="isviw" class="main-content c37928">
+        <h2 class="mb-7">丹青  {{ msg }}</h2>
+        <form method="POST" action="/login/">
+            <div class="form-group">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="用户名" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" placeholder="密码" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">登录</button>
+        </div>
+      </form>
+      <hr class="w-30"/>
+      <p class="text-center text-muted small-2">您还没有账号？
+        <a href="/reg/">立即注册</a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>

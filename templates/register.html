@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户注册</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5e8c7; /* 黄色牛皮笔记簿的背景色 */
+            font-family: 'Courier New', Courier, monospace; /* 笔记簿常用的字体 */
+        }
+form {
+    background-image: url('{% static 'image/2222.png' %}');
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px; /* 笔记簿宽度 */
+    height: 500px; /* 笔记簿高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; /* 为伪元素定位设置相对位置 */
+}
+
+form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50% 透明度 */
+    border-radius: inherit; /* 继承 form 的 border-radius */
+    z-index: -1; /* 确保伪元素在 form 内容之下 */
+}
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .form-row label {
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 25px; /* 字体大小 */
+        }
+        .form-row input {
+            border: none;
+            border-bottom: 1px solid #000;
+            flex-grow: 1;
+            background-color: #f5e8c7; /* 同背景色 */
+            padding: 5px;
+        }
+        .required:after {
+            content: "*";
+            color: red;
+            margin-left: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #8a6e51; /* 牛皮色 */
+            color: #131212;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            {#font-size: 16px;#}
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 20px; /* 字体大小 */
+        }
+        button:hover {
+            background-color: #8f7358; /* 牛皮色深一些 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <form method="POST" action="/reg/">
+        <h2 class="mb-7">丹青  {{ msg }}</h2>
+        {%csrf_token%}
+        <div class="form-row">
+            <label class="required">用户名：</label>
+            <input type="text" name="username" required />
+        </div>
+        <div class="form-row">
+            <label class="required">密  码：</label>
+            <input type="password" name="password" required />
+        </div>
+        <div class="form-row">
+            <label>邮  箱：</label>
+            <input type="text" name="email" />
+        </div>
+        <div class="form-row">
+            <label>手机号：</label>
+            <input type="text" name="lxdh" />
+        </div>
+        <button type="submit">注册</button>
+    </form>
+</body>
+</html>
